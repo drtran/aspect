@@ -1,0 +1,26 @@
+= Aspect sample code
+
+Aspect programming helps eliminate boiler code that scattered all over the actual code. Without aspect programming, code becomes litter with cross-cutting (logging, security, transaction, etc.) concerns (architecture, infrastructure, etc) that makes the code difficult to read and maintained.
+
+Thus, we should consider using aspect programming technique to increase our productivity in software development, especially with 'enterprise' applications.
+
+This project uses the Spring-Boot 2.0.5 version.
+
+== Basic definitions
+
+Before, we go forward, let's get a few basic definitions:
+
+* *pointcut*: defines the location where the aspect is applied
+* *advice*: defines the code to be executed @ the point-cut
+* *joint-point*: is a 'point' in the control flow of a program
+
+[source,java]
+----
+@Before("execution(* *(..))") # <1>
+	public void entering(JoinPoint joinPoint) { # <2>
+		enteringCalled = true;
+		logger.trace("entering " + joinPoint.getStaticPart().getSignature().toString());
+	}
+----
+<1> pointcut
+<2> advice
