@@ -1,6 +1,11 @@
 = Aspect sample code
 
-Aspect programming helps eliminate boiler code that scattered all over the actual code. Without aspect programming, code becomes litter with cross-cutting (logging, security, transaction, etc.) concerns (architecture, infrastructure, etc) that makes the code difficult to read and maintained.
+The sample code in this project is from Eberhard Wolf.
+
+Aspect programming helps eliminate boiler code that scattered all over the actual code. 
+Without aspect programming, code becomes litter with cross-cutting (logging, security, 
+transaction, etc.) concerns (architecture, infrastructure, etc) that makes 
+the code difficult to read and maintained.
 
 Thus, we should consider using aspect programming technique to increase our productivity in software development, especially with 'enterprise' applications.
 
@@ -17,10 +22,26 @@ Before, we go forward, let's get a few basic definitions:
 [source,java]
 ----
 @Before("execution(* *(..))") # <1>
-	public void entering(JoinPoint joinPoint) { # <2>
-		enteringCalled = true;
-		logger.trace("entering " + joinPoint.getStaticPart().getSignature().toString());
-	}
+public void entering(JoinPoint joinPoint) { # <2>
+  enteringCalled = true;
+  logger.trace("entering " + joinPoint.getStaticPart().getSignature().toString());
+}
 ----
 <1> pointcut
-<2> advice
+<2> advice & join-point
+
+== Examples
+
+[source,java]
+----
+execution(* *(*)) # <3>
+
+exeuction(int com.drkiettran.Service.hello(int))
+execution(* com.drkiettran..*Service.*(..)) #<4>
+----
+<3> any return type, any method, any type of parameter but only `one`.
+<4> first `..` any subpackage; 
+second `..` any number of parameters of any types.
+`**Service` any subpackage name ends with Service.
+`***(` any method name
+
