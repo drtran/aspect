@@ -45,3 +45,12 @@ second `..` any number of parameters of any types.
 `**Service` any subpackage name ends with Service.
 `***(` any method name
 
+Examples are organized as follows:
+
+`com.drkiettran.aspect, .aspect.simple, .aspect.advanced, .aspect.configuration, .aspect.advanced.configuration` are of type *basic* aspect examples.
+
+`com.drkiettran.aspect.pointcuts.` are of *deep-dive* examples
+
+`com.drkiettran.aspect.architecture.` are of *system architecture* examples
+
+
